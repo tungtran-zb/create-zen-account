@@ -71,7 +71,7 @@ const createAccount = async ({ page, email, password }) => {
 
   // input data-testid="textInput-16" with value "nguyen"
   await page.waitForSelector("input[data-testid='textInput-16']");
-  await page.type("input[data-testid='textInput-16']", chance.name());
+  await page.type("input[data-testid='textInput-16']", chance.first());
   // enter
   await page.keyboard.press("Enter");
 
@@ -115,7 +115,7 @@ const createAccount = async ({ page, email, password }) => {
 
   // input data-testid="textInput-38" with value "nguyen"
   await page.waitForSelector("input[data-testid='textInput-38']");
-  await page.type("input[data-testid='textInput-38']", chance.name());
+  await page.type("input[data-testid='textInput-38']", chance.last());
   // click button data-testid="textButtonInput-38"
   await page.waitForSelector("button[data-testid='textButtonInput-38']");
   await page.click("button[data-testid='textButtonInput-38']");
