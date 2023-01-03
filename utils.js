@@ -27,6 +27,7 @@ const sleepInPuppeteer = async (ms) => {
 
 const createBrowser = async () => {
   const browser = await puppeteer.launch({
+    handleSIGINT: false,
     headless: false,
     // chrome executable path on linux
     executablePath: process.env.BROWSER_PATH,

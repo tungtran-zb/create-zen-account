@@ -80,8 +80,34 @@ const formation = async ({ email, password, ssn, page }) => {
   await page.waitForSelector("input[id='defaultName0-item0']");
   await page.click("input[id='defaultName0-item0']");
   // check id="defaultAddress0-item0"
-  await page.waitForSelector("input[id='defaultAddress0-item0']");
-  await page.click("input[id='defaultAddress0-item0']");
+  // await page.waitForSelector("input[id='defaultAddress0-item0']");
+  // await page.click("input[id='defaultAddress0-item0']");
+  await page.waitForSelector("input[autocomplete='address-line1']");
+  await page.click("input[autocomplete='address-line1']");
+  await page.type("input[autocomplete='address-line1']", "77655 Huels Locks");
+
+  // input autocomplete="address-line2" with value "Apt. 123"
+  await page.waitForSelector("input[autocomplete='address-line2']");
+  await page.click("input[autocomplete='address-line2']");
+  await page.type("input[autocomplete='address-line2']", "Apt. 272");
+
+  // input autocomplete="address-level2" with value "New York"
+  await page.waitForSelector("input[autocomplete='address-level2']");
+  await page.click("input[autocomplete='address-level2']");
+  await page.type("input[autocomplete='address-level2']", "South Astrid");
+
+  // input div data-cy="state" with value "New York"
+  await page.waitForSelector("div[data-cy='state']");
+  await page.click("div[data-cy='state']");
+  await page.type("div[data-cy='state']", "Nevada");
+  // enter
+  await page.keyboard.press("Enter");
+
+  // input autocomplete="postal-code" with value "10001"
+  await page.waitForSelector("input[autocomplete='postal-code']");
+  await page.click("input[autocomplete='postal-code']");
+  await page.type("input[autocomplete='postal-code']", "86258");
+
   // click button id="flow-button-next"
   await page.waitForSelector("button[id='flow-button-next']");
   await page.click("button[id='flow-button-next']");
