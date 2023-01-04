@@ -28,8 +28,8 @@ const createAccount = async ({ page, email, password }) => {
     chance.company()
   );
 
-  await page.setDefaultNavigationTimeout(60000);
-  await page.setDefaultTimeout(60000);
+  await page.setDefaultNavigationTimeout(30000);
+  await page.setDefaultTimeout(30000);
 
   // click button with aria-label "Start Now"
   await page.waitForSelector("a[aria-label='Start Now']");
