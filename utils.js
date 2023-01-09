@@ -1,7 +1,7 @@
-require("dotenv").config();
+require('dotenv-extended').load();
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
-const path = require("path");
+const {executablePath} = require('puppeteer');
 const fs = require("fs");
 const dayjs = require("dayjs");
 
@@ -30,7 +30,7 @@ const createBrowser = async () => {
     handleSIGINT: false,
     headless: false,
     // chrome executable path on linux
-    executablePath: process.env.BROWSER_PATH,
+    executablePath: process.env.PUPPETEER_EXEC_PATH || process.env.BROWSER_PATH || executablePath(),
     args: [
       "--incognito",
       "--disable-notifications",

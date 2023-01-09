@@ -1,5 +1,4 @@
 node_modules/
 tmp/
 accounts/*.txt
-cookies.json
 .env

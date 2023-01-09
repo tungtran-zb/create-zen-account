@@ -30,10 +30,10 @@ const createAccount = async ({ page, email, password }) => {
 
   await page.setDefaultNavigationTimeout(30000);
   await page.setDefaultTimeout(30000);
-
+  
   // click button with aria-label "Start Now"
-  await page.waitForSelector("a[aria-label='Start Now']");
-  await page.click("a[aria-label='Start Now']");
+  await page.waitForSelector("a[aria-label='Start an LLC']");
+  await page.click("a[aria-label='Start an LLC']");
 
   // Click switch with class MuiSwitch-input
   await page.waitForSelector("input.MuiSwitch-input");
