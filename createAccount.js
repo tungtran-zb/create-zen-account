@@ -145,8 +145,8 @@ const createAccount = async ({ page, email, password }) => {
   await page.click("div[data-testid='flowButton-27-ra-yes']");
 
   // click div data-testid="flowButton-28-ein-biz-yes"
-  await page.waitForSelector("div[data-testid='flowButton-28-ein-biz-yes']");
-  await page.click("div[data-testid='flowButton-28-ein-biz-yes']");
+  await page.waitForSelector("div[data-testid='flowButton-28-biz-docs-only']");
+  await page.click("div[data-testid='flowButton-28-biz-docs-only']");
 
   // click div data-testid="flowButton-232-show-pro"
   await page.waitForSelector("div[data-testid='flowButton-232-show-pro']");
@@ -215,7 +215,7 @@ const createAccount = async ({ page, email, password }) => {
   await frame.click("input[aria-label='Credit or debit card expiration date']");
   await frame.type(
     "input[aria-label='Credit or debit card expiration date']",
-    "01/23"
+    "12/23"
   );
 
   // input aria-label="Credit or debit card CVC/CVV" with value 123
