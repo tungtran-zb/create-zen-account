@@ -8,17 +8,19 @@ const dayjs = require("dayjs");
 puppeteer.use(StealthPlugin());
 
 const createEmailAndPassword = () => {
-  const name = "quynh";
+  const name = "tung";
   const today = dayjs().format('YYYYMMDD')
   //get time in format HHMMSS in local time use dayjs
   const time = dayjs().format("HHmmss");
 
   const email = `${name}+zbtest.${today}.${time}@zenbusiness.com`;
   const password = "Potato@02012020";
-  // random SSN number
-  const ssn = (Math.floor(Math.random() * 900000000) + 100000000).toString();
 
-  return { email, password, ssn };
+  // random ein option from 0 to 3
+  const einOption = Math.floor(Math.random() * 4);
+
+
+  return { email, password, einOption };
 };
 
 const sleepInPuppeteer = async (ms) => {

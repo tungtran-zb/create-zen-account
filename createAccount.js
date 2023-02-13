@@ -12,7 +12,7 @@ const chance = new Chance();
 
 puppeteer.use(StealthPlugin());
 
-const createAccount = async ({ page, email, password }) => {
+const createAccount = async ({ page, email, password, einOption }) => {
   await page.goto("https://www.dev.zenbusiness.com/");
 
   // wait for input with aria-label="ZenBusiness Form Field"
@@ -145,8 +145,26 @@ const createAccount = async ({ page, email, password }) => {
   await page.click("div[data-testid='flowButton-27-ra-yes']");
 
   // click div data-testid="flowButton-28-ein-biz-yes"
-  await page.waitForSelector("div[data-testid='flowButton-28-biz-docs-only']");
-  await page.click("div[data-testid='flowButton-28-biz-docs-only']");
+  switch (einOption) {
+    case 0:
+      await page.waitForSelector("div[data-testid='flowButton-28-ein-biz-yes']");
+      await page.click("div[data-testid='flowButton-28-ein-biz-yes']");
+      break;
+    case 1:
+      await page.waitForSelector("div[data-testid='flowButton-28-ein-only']");
+      await page.click("div[data-testid='flowButton-28-ein-only']");
+      break;
+    case 2:
+      await page.waitForSelector("div[data-testid='flowButton-28-biz-docs-only']");
+      await page.click("div[data-testid='flowButton-28-biz-docs-only']");
+      break;
+    case 3:
+      await page.waitForSelector("div[data-testid='flowButton-28-ein-docs-no']");
+      await page.click("div[data-testid='flowButton-28-ein-docs-no']");
+      break;
+    default:
+      throw new Error("Invalid EIN option");
+  }
 
   // click div data-testid="flowButton-232-show-pro"
   await page.waitForSelector("div[data-testid='flowButton-232-show-pro']");
@@ -215,7 +233,7 @@ const createAccount = async ({ page, email, password }) => {
   await frame.click("input[aria-label='Credit or debit card expiration date']");
   await frame.type(
     "input[aria-label='Credit or debit card expiration date']",
-    "12/23"
+    "12/27"
   );
 
   // input aria-label="Credit or debit card CVC/CVV" with value 123
