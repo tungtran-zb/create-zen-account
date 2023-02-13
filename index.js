@@ -14,12 +14,12 @@ const createAccountWorker = async () => {
   const einOptionText = mapEinOptions[einOption];
 
   try {
-    console.log(`${email}|${password}|${einOptionText} => START`);
+    console.log(`${email}|${password}|${einOption + 1}) ${einOptionText} => START`);
     await createAccount({ page, email, password, einOption });
     await formation({ email, password, page });
     await sleepInPuppeteer(10000);
-    console.log(`${email}|${password}|${einOptionText} => DONE`);
-    appendAccountToFile(`${email}|${password}|${einOptionText}`);
+    console.log(`${email}|${password}|${einOption + 1}) ${einOptionText} => FINISH`);
+    appendAccountToFile(`${email}|${password}|${einOption + 1}) ${einOptionText}`);
   } catch (e) {
     // console.log(e);
     await browser.close();

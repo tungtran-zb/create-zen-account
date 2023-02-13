@@ -8,7 +8,7 @@ const dayjs = require("dayjs");
 puppeteer.use(StealthPlugin());
 
 const createEmailAndPassword = () => {
-  const name = "tung";
+  const name = process.env.NAME || 'quynh';
   const today = dayjs().format('YYYYMMDD')
   //get time in format HHMMSS in local time use dayjs
   const time = dayjs().format("HHmmss");
