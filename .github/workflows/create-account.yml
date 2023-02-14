@@ -1,8 +1,6 @@
 name: "Create Account"
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
 
 jobs:
   install-dependencies:
@@ -11,7 +9,7 @@ jobs:
     env:
 
       # randomize the name in array
-      NAME: tungtran
+      NAME: tung
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2

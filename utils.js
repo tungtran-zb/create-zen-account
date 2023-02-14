@@ -10,13 +10,13 @@ puppeteer.use(StealthPlugin());
 let accountNumber = 0;
 
 const createEmailAndPassword = (byOrder) => {
-  const name = process.env.NAME || 'tung';
+  const name = process.env.NAME || 'quynh';
   const today = dayjs().format('YYYYMMDD')
   //get time in format HHMMSS in local time use dayjs
   const time = byOrder ? accountNumber++ : dayjs().format("HHmmss");
 
   const email = `${name}+zbtest.${today}.${time}@zenbusiness.com`;
-  const password = "Potato@02012020";
+  const password = process.env.PASSWORD || "Potato@02012020";
 
   // random ein option from 0 to 3
   const einOption = Math.floor(Math.random() * 4);
@@ -34,7 +34,7 @@ const createBrowser = async () => {
     handleSIGINT: false,
     headless: false,
     // chrome executable path on linux
-    executablePath: process.env.PUPPETEER_EXEC_PATH || process.env.BROWSER_PATH || executablePath(),
+    executablePath: process.env.PUPPETEER_EXEC_PATH || executablePath(),
     args: [
       "--incognito",
       "--disable-notifications",
