@@ -8,9 +8,9 @@ const createAccount = require("./createAccount");
 const formation = require("./formation");
 const mapEinOptions = require("./constants").mapEinOptions;
 
-const createAccountWorker = async () => {
+const createAccountWorker = async (byOrder) => {
   const { browser, page } = await createBrowser();
-  const { email, password, einOption } = createEmailAndPassword();
+  const { email, password, einOption } = createEmailAndPassword(byOrder);
   const einOptionText = mapEinOptions[einOption];
 
   try {
@@ -30,11 +30,12 @@ const createAccountWorker = async () => {
 
 const main = async () => {
   const args = process.argv.slice(2);
+  const byOrder = args[1] === "byOrder";
 
   const count = parseInt(args[0]) ?? 5;
   console.log(`number accounts: ${count}`);
   for (let i = 0; i < count; i++) {
-    await createAccountWorker();
+    await createAccountWorker(byOrder);
   }
 };
 

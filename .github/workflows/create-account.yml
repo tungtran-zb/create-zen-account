@@ -1,9 +1,8 @@
 name: "Create Account"
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
   install-dependencies:
@@ -23,4 +22,4 @@ jobs:
         env:
           CI: "true"
         with:
-          args: npm start 5
+          args: npm run auto

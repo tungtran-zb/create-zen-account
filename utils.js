@@ -1,17 +1,19 @@
 require('dotenv-extended').load();
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
-const {executablePath} = require('puppeteer');
+const { executablePath } = require('puppeteer');
 const fs = require("fs");
 const dayjs = require("dayjs");
 
 puppeteer.use(StealthPlugin());
 
-const createEmailAndPassword = () => {
-  const name = process.env.NAME || 'quynh';
+let accountNumber = 0;
+
+const createEmailAndPassword = (byOrder) => {
+  const name = process.env.NAME || 'tung';
   const today = dayjs().format('YYYYMMDD')
   //get time in format HHMMSS in local time use dayjs
-  const time = dayjs().format("HHmmss");
+  const time = byOrder ? accountNumber++ : dayjs().format("HHmmss");
 
   const email = `${name}+zbtest.${today}.${time}@zenbusiness.com`;
   const password = "Potato@02012020";
