@@ -23,3 +23,9 @@ jobs:
           CI: "true"
         with:
           args: npm run auto
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          # name is today's date
+          name: ${{ github.run_id }}.txt
+          path: ./accounts/*.txt
