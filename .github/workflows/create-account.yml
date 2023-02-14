@@ -7,9 +7,11 @@ on:
 jobs:
   install-dependencies:
     name: Install Dependencies
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
-      NAME: ${{ secrets.NAME }}
+
+      # randomize the name in array
+      NAME: tungtran
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
@@ -29,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           # name is today's date
-          name: ${{ github.run_id }}.txt
+          name: ${{ format('accounts-{0}', github.run_number) }}
           path: ./accounts/*.txt

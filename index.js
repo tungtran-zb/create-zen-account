@@ -38,9 +38,9 @@ const createAccountWorker = async (byOrder) => {
 
 const main = async () => {
   const args = process.argv.slice(2);
-  const byOrder = args[1] === "byOrder";
 
   const count = parseInt(args[0]) ?? 5;
+  const byOrder = args[1] === "byOrder";
   console.log(`number accounts: ${count}`);
   for (let i = 0; i < count; i++) {
     await createAccountWorker(byOrder);
