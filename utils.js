@@ -16,7 +16,7 @@ const createEmailAndPassword = (byOrder) => {
   const time = byOrder ? accountNumber++ : dayjs().format("HHmmss");
 
   const email = `${name}+zbtest.${today}.${time}@zenbusiness.com`;
-  const password = process.env.PASSWORD || "Potato@02012020";
+  const password = process.env.PASSWORD || "Default@123";
 
   // random ein option from 0 to 3
   const einOption = Math.floor(Math.random() * 4);
