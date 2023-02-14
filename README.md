@@ -19,7 +19,7 @@ npm install
 
 3. Run script to create accounts
   
-Example run create 20 accounts
+Example: create 20 accounts
 ```
 npm run start 20
 ```
