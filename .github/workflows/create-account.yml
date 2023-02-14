@@ -8,6 +8,8 @@ jobs:
   install-dependencies:
     name: Install Dependencies
     runs-on: ubuntu-latest
+    env:
+      NAME: ${{ secrets.NAME }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2

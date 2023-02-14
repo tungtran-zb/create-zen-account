@@ -13,6 +13,14 @@ const createAccountWorker = async (byOrder) => {
   const { email, password, einOption } = createEmailAndPassword(byOrder);
   const einOptionText = mapEinOptions[einOption];
 
+  if (byOrder) {
+    await page.setDefaultNavigationTimeout(60000);
+    await page.setDefaultTimeout(60000);
+  } else {
+    await page.setDefaultNavigationTimeout(30000);
+    await page.setDefaultTimeout(30000);
+  }
+
   try {
     console.log(`${email}|${password}|${einOption + 1}) ${einOptionText} => START`);
     await createAccount({ page, email, password, einOption });

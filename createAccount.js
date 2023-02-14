@@ -28,9 +28,6 @@ const createAccount = async ({ page, email, password, einOption }) => {
     chance.company()
   );
 
-  await page.setDefaultNavigationTimeout(30000);
-  await page.setDefaultTimeout(30000);
-  
   // click button with aria-label "Start Now"
   await page.waitForSelector("a[aria-label='Start an LLC']");
   await page.click("a[aria-label='Start an LLC']");
