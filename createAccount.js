@@ -28,9 +28,8 @@ const createAccount = async ({ page, email, password, einOption }) => {
     chance.company()
   );
 
-  // click button with aria-label "Start Now"
-  await page.waitForSelector("a[aria-label='Start an LLC']");
-  await page.click("a[aria-label='Start an LLC']");
+  // press enter
+  await page.keyboard.press("Enter");
 
   // Click switch with class MuiSwitch-input
   await page.waitForSelector("input.MuiSwitch-input");
