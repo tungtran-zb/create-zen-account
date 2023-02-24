@@ -13,23 +13,10 @@ const chance = new Chance();
 puppeteer.use(StealthPlugin());
 
 const createAccount = async ({ page, email, password, einOption }) => {
-  await page.goto("https://www.dev.zenbusiness.com/");
+  await page.goto("https://www.dev.zenbusiness.com/r2/registration-new/init?flow=ff_v2&type=llc&test=v6");
 
-  // wait for input with aria-label="ZenBusiness Form Field"
-  await page.waitForSelector("input[aria-label='ZenBusiness Form Field']");
-
-  const cookies = await page.cookies();
-  fs.writeFileSync("cookies.json", JSON.stringify(cookies));
-
-  // click input with aria-label="ZenBusiness Form Field"
-  await page.click("input[aria-label='ZenBusiness Form Field']");
-  await page.type(
-    "input[aria-label='ZenBusiness Form Field']",
-    chance.company()
-  );
-
-  // press enter
-  await page.keyboard.press("Enter");
+  // const cookies = await page.cookies();
+  // fs.writeFileSync("cookies-save.json", JSON.stringify(cookies));
 
   // Click switch with class MuiSwitch-input
   await page.waitForSelector("input.MuiSwitch-input");
@@ -39,11 +26,11 @@ const createAccount = async ({ page, email, password, einOption }) => {
   await page.waitForSelector("div[data-testid='flowButton-49-yes']");
   await page.click("div[data-testid='flowButton-49-yes']");
 
-  // // input data-testid="textInput-186" with value "AgilityIO"
-  // await page.waitForSelector("input[data-testid='textInput-186']");
-  // await page.type("input[data-testid='textInput-186']", "AgilityIO");
-  // // enter
-  // await page.keyboard.press("Enter");
+  // input data-testid="textInput-186" with value "AgilityIO"
+  await page.waitForSelector("input[data-testid='textInput-186']");
+  await page.type("input[data-testid='textInput-186']", chance.company());
+  // enter
+  await page.keyboard.press("Enter");
 
   // input data-testid="textInput-196" with value "New York"
   await page.waitForSelector("input[data-testid='textInput-196']");

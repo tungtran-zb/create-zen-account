@@ -2,3 +2,4 @@ node_modules/
 tmp/
 accounts/*.txt
 .env
+cookies.json

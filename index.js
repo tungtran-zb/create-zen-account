@@ -29,7 +29,7 @@ const createAccountWorker = async (byOrder) => {
     console.log(`${email}|${password}|${einOption + 1}) ${einOptionText} => FINISH`);
     appendAccountToFile(`${email}|${password}|${einOption + 1}) ${einOptionText}`);
   } catch (e) {
-    // console.log(e);
+    console.log(e?.message);
     await browser.close();
   } finally {
     await browser.close();

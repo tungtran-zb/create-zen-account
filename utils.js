@@ -84,7 +84,7 @@ const createBrowser = async () => {
   await page.setDefaultTimeout(timeout);
 
   try {
-    const cookies = JSON.parse(await fs.readFileSync("./cookies.json"));
+    const cookies = JSON.parse(await fs.readFileSync("./cookies-save.json"));
     await page.setCookie(...cookies);
   } catch (e) {
     // do nothing
